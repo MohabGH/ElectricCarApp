@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Ecar',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue.shade900),
         ),
         home: MyHomePage(),
       ),
