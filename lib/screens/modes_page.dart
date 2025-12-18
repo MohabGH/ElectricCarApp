@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../../constants/app_constants.dart';
 import '../../widgets/battery_indicator.dart';
 import 'manual_mode.dart';
