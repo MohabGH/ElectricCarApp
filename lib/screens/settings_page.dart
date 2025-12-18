@@ -6,6 +6,21 @@ import '../../widgets/battery_indicator.dart';
 
 /// Settings page for wheel speed configuration
 class SettingsPage extends StatelessWidget {
+
+  double _mapNumbersToSpeed(int number)
+  {
+    if(number == 0) return 0;
+    if(number == 1) return 75;
+    return 75 + number * 20;
+  }
+
+  int _mapSpeedToNumbers(double speed)
+  {
+    if(speed == 0) return 0;
+    if(speed <= 75) return 1;
+    return ((speed - 75) / 20).round();
+  }
+
   @override
   Widget build(BuildContext context) {
     final settings = Provider.of<SettingsState>(context);
@@ -40,46 +55,50 @@ class SettingsPage extends StatelessWidget {
 
               // Left Wheel Speed
               Text(
-                'Left Wheel Speed: ${settings.leftWheelSpeed.toInt()}',
+                'Left Wheel Speed: ${_mapSpeedToNumbers(settings.leftWheelSpeed)}',
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               Slider(
-                value: settings.leftWheelSpeed,
+                value: _mapSpeedToNumbers(settings.leftWheelSpeed).toDouble(),
                 min: 0,
-                max: 255,
-                divisions: 255,
+                max: 9,
+                divisions: 9,
                 label: settings.leftWheelSpeed.toInt().toString(),
                 onChanged: (value) {
-                  settings.setLeftWheelSpeed(value);
+                  settings.setLeftWheelSpeed(_mapNumbersToSpeed(value.toInt()));
+                  print(_mapNumbersToSpeed(value.toInt()));
                 },
                 onChangeEnd: (value) {
-                  bluetoothService.sendData('LS:${value.toInt()}');
+                  bluetoothService.sendData('LS:${_mapNumbersToSpeed(value.toInt()).toInt()}');
+                  print(_mapNumbersToSpeed(value.toInt()).toInt());
                 },
               ),
               const SizedBox(height: 20),
 
               // Right Wheel Speed
               Text(
-                'Right Wheel Speed: ${settings.rightWheelSpeed.toInt()}',
+                'Right Wheel Speed: ${_mapSpeedToNumbers(settings.rightWheelSpeed)}',
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               Slider(
-                value: settings.rightWheelSpeed,
+                value: _mapSpeedToNumbers(settings.rightWheelSpeed).toDouble(),
                 min: 0,
-                max: 255,
-                divisions: 255,
+                max: 9,
+                divisions: 9,
                 label: settings.rightWheelSpeed.toInt().toString(),
                 onChanged: (value) {
-                  settings.setRightWheelSpeed(value);
+                  settings.setRightWheelSpeed(_mapNumbersToSpeed(value.toInt()));
+                  print(_mapNumbersToSpeed(value.toInt()));
                 },
                 onChangeEnd: (value) {
-                  bluetoothService.sendData('RS:${value.toInt()}');
+                  bluetoothService.sendData('RS:${_mapNumbersToSpeed(value.toInt()).toInt()}');
+                  print(_mapNumbersToSpeed(value.toInt()).toInt());
                 },
               ),
               const SizedBox(height: 30),
