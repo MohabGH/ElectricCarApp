@@ -127,7 +127,6 @@ dependencies:
 - `R` - Right
 - `S` - Stop
 - `PP` - Parallel Parking
-- `PV` - Perpendicular Parking
 - `A` - Start Autonomous
 - `LS:XXX` - Set Left Speed (0-255)
 - `RS:XXX` - Set Right Speed (0-255)
