@@ -37,7 +37,7 @@ lib/
 
 ### 1. **Multiple Control Modes**
    - **Manual Mode**: Direct control with recording capability
-   - **Auto Parking**: Parallel and perpendicular parking
+   - **Auto Parking**: Parallel parking
    - **Autonomous**: Self-navigation mode
 
 ### 2. **Bluetooth Communication**
