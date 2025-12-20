@@ -58,7 +58,8 @@ class BluetoothService extends ChangeNotifier {
     // Parse battery level if the data starts with "BAT:"
     if (dataString.startsWith('BAT:')) {
       try {
-        _batteryLevel = double.parse(dataString.substring(4));
+        double sentVoltage = double.parse(dataString.substring(4));
+        _batteryLevel = ((sentVoltage + 2.75) - 9 / (12.6 - 9)) * 100;
         notifyListeners();
       } catch (e) {
         print('Error parsing battery level: $e');
