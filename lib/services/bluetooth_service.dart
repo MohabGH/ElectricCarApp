@@ -13,7 +13,7 @@ class BluetoothService extends ChangeNotifier {
   double _batteryLevel = 0.0;
   bool _isPlayingRecording = false;
 
-  final double _offSetVoltage = 2.75;
+  final double _offSetVoltage = 3;
   final double _maxVoltage = 12.6;
   final double _minVoltage = 9.0;
 
@@ -67,6 +67,8 @@ class BluetoothService extends ChangeNotifier {
       try {
         sentVoltage = double.parse(dataString.substring(4));
         _batteryLevel = (((sentVoltage + _offSetVoltage) - _minVoltage) / (_maxVoltage - _minVoltage)) * 100;
+        if (_batteryLevel > 100) _batteryLevel = 100;
+        if (_batteryLevel < 0) _batteryLevel = 0;
         notifyListeners();
       } catch (e) {
         print('Error parsing battery level: $e');

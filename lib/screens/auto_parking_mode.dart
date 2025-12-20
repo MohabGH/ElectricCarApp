@@ -51,11 +51,20 @@ class AutoParkingMode extends StatelessWidget {
                 const SizedBox(height: 40),
 
                 ControlButton(
-                  icon: Icons.local_parking,
-                  label: 'Start Parallel Parking',
-                  command: 'PP',
+                  icon: Icons.turn_right,
+                  label: 'Start Right Parking',
+                  command: 'RP',
                   bluetoothService: bluetoothService,
                   color: Colors.blue,
+                ),
+                const SizedBox(height: 20),
+
+                ControlButton(
+                  icon: Icons.turn_left,
+                  label: 'Start Left Parking',
+                  command: 'LP',
+                  bluetoothService: bluetoothService,
+                  color: Colors.green,
                 ),
                 const SizedBox(height: 20),
 
