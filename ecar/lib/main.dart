@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => RecordingsState()),
       ],
       child: MaterialApp(
-        title: 'Ecar',
+        title: 'الجزري',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue.shade900),
         ),
